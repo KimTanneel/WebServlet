@@ -19,12 +19,27 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         switch (action){
             case "create":
                createNewCustomer(request,response);
-
                 break;
             case "update":
+                updateCustomer(request,response);
                 break;
             case "insert":
         }
+    }
+
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String id =request.getParameter("id");
+        String type = request.getParameter("type_id");
+        String name = request.getParameter("name");
+        String birthday = request.getParameter("birthday");
+        String gender = request.getParameter("gender");
+        String id_card = request.getParameter("id_card");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String email= request.getParameter("email");
+        CustomerSevice customerSevice = new CustomerServiceImpl();
+        customerSevice.UpdateCustomer(new Customer(id,type,name,birthday,gender,id_card,phone,address,email));
+        response.sendRedirect("/customer");
     }
 
     private void createNewCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -53,10 +68,21 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
                 break;
             case "view":
                 viewCustomerList(request,response);
+            case "edit":
+                viewEditForm(request,response);
             default:
                 viewCustomerList(request,response);
                 break;
         }
+    }
+
+    private void viewEditForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String id =request.getParameter("id");
+        CustomerSevice customerSevice = new CustomerServiceImpl();
+        Customer customer = customerSevice.findCustomerById(id);
+
+        request.setAttribute("customer",customer);
+        request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
     }
 
     private void viewCreateCustomerForm(HttpServletRequest request, HttpServletResponse response) throws IOException {

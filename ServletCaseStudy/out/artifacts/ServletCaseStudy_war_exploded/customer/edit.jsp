@@ -13,12 +13,12 @@
 </head>
 <body>
 <div class="container-fluid main">
-    <h1>Create New Product</h1>
-    <form action="/customer?action=create" method="post">
+    <h1>Edit Product</h1>
+    <form action="/customer?action=update" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-5">
-                <input type="text" name="id" class="form-control" >
+                <input readonly type="text" name="id" class="form-control" value="${customer.id}">
             </div>
         </div>
         <div class="form-group row">
@@ -30,6 +30,7 @@
                     <option value="3">Gold</option>
                     <option value="4">Platinum</option>
                     <option value="5">Diamond</option>
+
                 </select>
             </div>
 
@@ -37,13 +38,13 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-5">
-                <input type="text" name="name" class="form-control" >
+                <input type="text" name="name" class="form-control" value="${customer.name}">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Birthday</label>
             <div class="col-sm-5">
-                <input type="date" name="birthday" class="form-control" >
+                <input type="date" name="birthday" class="form-control" value="${customer.birthday}">
             </div>
         </div>
         <div class="form-group row">
@@ -59,28 +60,28 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID CARD</label>
             <div class="col-sm-5">
-                <input type="text" name="id_card" class="form-control" >
+                <input type="text" name="id_card" class="form-control" value="${customer.id_card}" >
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-5">
-                <input type="text" name="phone" class="form-control" >
+                <input type="text" name="phone" class="form-control" value="${customer.phone}">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-5">
-                <input type="email" name="email" class="form-control" >
+                <input type="email" name="email" class="form-control" value="${customer.email}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Address</label>
+            <label class="col-sm-2 col-form-label ">Address</label>
             <div class="col-sm-5">
-                <input type="text" name="address" class="form-control" >
+                <input type="text" name="address" class="form-control" value="${customer.address}">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         <button type="reset" class = "btn btn-primary">Cancel</button>
     </form>
 </div>

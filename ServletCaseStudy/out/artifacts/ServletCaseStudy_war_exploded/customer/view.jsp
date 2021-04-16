@@ -28,7 +28,29 @@
         <tr>
             <td>${customer.id}</td>
             <td>${customer.name}</td>
-            <td>${customer.type_id}</td>
+            <td>
+                <c:choose>
+                    <c:when test = "${customer.type_id == 1}">
+                        MemBer
+                    </c:when>
+                    <c:when test = "${customer.type_id ==2}">
+                        Silver
+                    </c:when>
+                    <c:when test = "${customer.type_id ==3}">
+                        Gold
+                    </c:when>
+                    <c:when test = "${customer.type_id ==4}">
+                        Platinum
+                    </c:when>
+                    <c:when test = "${customer.type_id ==5}">
+                        Dinamond
+                    </c:when>
+                    <c:otherwise>
+                        UNDEFINE
+                    </c:otherwise>
+                </c:choose>
+
+            </td>
             <td>
                 <c:choose>
                     <c:when test = "${customer.gender == 0}">
@@ -43,9 +65,9 @@
                 </c:choose>
             </td>
             <td>${customer.birthday }</td>
-            <td><a class="btn btn-info" href="detail?id=${customer.id}">Detail</a></td>
-            <td><a class="btn btn-primary" href="edit?id=${customer.id}">Edit</a></td>
-            <td><a class="btn btn-danger" href="delete?id=${customer.id}">Delete</a></td>
+            <td><a class="btn btn-info" href="/customer?action=detail?id=${customer.id}">Detail</a></td>
+            <td><a class="btn btn-primary" href="/customer?action=edit&id=${customer.id}">Edit</a></td>
+            <td><a class="btn btn-danger" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
