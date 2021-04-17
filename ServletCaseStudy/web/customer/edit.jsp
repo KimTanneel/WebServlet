@@ -10,9 +10,10 @@
 <head>
     <link rel="stylesheet" href="create.css">
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body>
-<div class="container-fluid main">
+<body id="body-edit">
+<div class="container-fluid main" id="main">
     <h1>Edit Product</h1>
     <form action="/customer?action=update" method="post">
         <div class="form-group row">
@@ -81,9 +82,45 @@
                 <input type="text" name="address" class="form-control" value="${customer.address}">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary " id="save">Save</button>
         <button type="reset" class = "btn btn-primary">Cancel</button>
     </form>
+    <script  >
+        $(document).ready(function () {
+            $('#save').click(function () {
+                let id = document.getElementsByName('id');
+                console.log(id);
+                let type_id = document.getElementsByName('type_id');
+                let name = document.getElementsByName('name').values();
+                let birthday = document.getElementsByName('birthday');
+                let gender = document.getElementsByName('gender');
+                let id_card = document.getElementsByName('id_card');
+                let phone = document.getElementsByName('phone');
+                let email = document.getElementsByName('email');
+                let address = document.getElementsByName('address');
+                $.ajax({
+                    type:'POST',
+                    data:{
+                        action:'update',
+                        id:id,
+                        type_id:type_id,
+                        name:name,
+                        birthday:birthday,
+                        gender:gender,
+                        id_card:id_card,
+                        phone:phone,
+                        email:email,
+                        address:address
+                    },
+                    url:'customer',
+                    success :function (result) {
+                        $('#main').html(result);
+                    }
+                })
+            })
+
+        })
+    </script>
 </div>
 </body>
 </html>

@@ -28,7 +28,7 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         }
     }
 
-    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String id =request.getParameter("id");
         String type = request.getParameter("type_id");
         String name = request.getParameter("name");
@@ -40,7 +40,8 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         String email= request.getParameter("email");
         CustomerSevice customerSevice = new CustomerServiceImpl();
         customerSevice.UpdateCustomer(new Customer(id,type,name,birthday,gender,id_card,phone,address,email));
-        response.sendRedirect("/customer");
+        request.setAttribute("listCustomer",customerSevice.findAll());
+        request.getRequestDispatcher("/customer/view.jsp").forward(request,response);
     }
 
     private void createNewCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {

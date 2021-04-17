@@ -66,9 +66,9 @@
                 </c:choose>
             </td>
             <td>${customer.birthday }</td>
-            <td><a class="btn btn-info " id="btn-detail" name="detail" href="/customer?action=detail?id=${customer.id}">Detail</a></td>
-            <td><a class="btn btn-primary" id="btn-edit${customer.id}"name="edit " href="/customer?action=edit?id=${customer.id}" >Edit</a></td>
-            <td><a class="btn btn-danger" id="btn-delete" name="delete" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
+            <td><a class="btn btn-info " id="btn-detail${customer.id}" name="detail" >Detail</a></td>
+            <td><a class="btn btn-primary" id="btn-edit${customer.id}"name="edit" >Edit</a></td>
+            <td><a class="btn btn-danger" id="btn-delete${customer.id}" name="delete">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -99,8 +99,8 @@
         console.log(xlen);
         let btn_id ='';
         for(let i =1;i<=xlen;i++){
-            btn_id ='#btn-edit'+i;
             console.log(btn_id);
+            btn_id ='#btn-edit'+i;
             $(btn_id).click(function () {
                 $.ajax({
                     type:'GET',
@@ -114,7 +114,25 @@
         }
 
     })
-
+    // $(document).ready(function () {
+    //     let xlen =document.getElementsByName('delete').length;
+    //     let btn_id ='';
+    //     for(let i =1;i<=xlen;i++){
+    //         btn_id ='#btn-delete'+i;
+    //         console.log(btn_id);
+    //         $(btn_id).click(function () {
+    //             $.ajax({
+    //                 type:'GET',
+    //                 data:{action:'delete',id:i},
+    //                 url:'customer',
+    //                 success :function (result) {
+    //                     $('#body').html(result);
+    //                 }
+    //             })
+    //         })
+    //     }
+    //
+    // })
 </script>
 
 </body>
