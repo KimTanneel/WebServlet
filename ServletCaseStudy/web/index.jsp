@@ -16,7 +16,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -139,14 +139,14 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script>
+<script  >
     $(document).ready(function () {
         $('#btn-customer').click(function () {
             $.ajax({
-                type:'POST',
-                url:'CustomerServlet',
+                type:'GET',
+                url:'customer',
                 success :function (result) {
-                    $('#body').html(result);;;
+                    $('#body').html(result);
                 }
             })
         })

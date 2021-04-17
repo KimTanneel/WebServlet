@@ -10,6 +10,7 @@
 <html>
 <head>
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 <table class="table">
@@ -65,9 +66,9 @@
                 </c:choose>
             </td>
             <td>${customer.birthday }</td>
-            <td><a class="btn btn-info" href="/customer?action=detail?id=${customer.id}">Detail</a></td>
-            <td><a class="btn btn-primary" href="/customer?action=edit&id=${customer.id}">Edit</a></td>
-            <td><a class="btn btn-danger" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
+            <td><a class="btn btn-info " id="btn-detail" name="detail" href="/customer?action=detail?id=${customer.id}">Detail</a></td>
+            <td><a class="btn btn-primary" id="btn-edit${customer.id}"name="edit " href="/customer?action=edit?id=${customer.id}" >Edit</a></td>
+            <td><a class="btn btn-danger" id="btn-delete" name="delete" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -92,7 +93,29 @@
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        let xlen =document.getElementsByName('edit').length;
+        console.log(xlen);
+        let btn_id ='';
+        for(let i =1;i<=xlen;i++){
+            btn_id ='#btn-edit'+i;
+            console.log(btn_id);
+            $(btn_id).click(function () {
+                $.ajax({
+                    type:'GET',
+                    data:{action:'edit',id:i},
+                    url:'customer',
+                    success :function (result) {
+                        $('#body').html(result);
+                    }
+                })
+            })
+        }
 
+    })
+
+</script>
 
 </body>
 </html>

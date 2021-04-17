@@ -16,19 +16,16 @@ import java.net.http.HttpResponse;
 public class CustomerServlet extends javax.servlet.http.HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        response.setContentType("text/plain");
-        PrintWriter out = response.getWriter();
-        out.println("HELLOL GUY");
-        //        String action = request.getParameter("action");
-//        switch (action){
-//            case "create":
-//               createNewCustomer(request,response);
-//                break;
-//            case "update":
-//                updateCustomer(request,response);
-//                break;
-//            case "insert":
-//        }
+        String action = request.getParameter("action");
+        switch (action){
+            case "create":
+               createNewCustomer(request,response);
+                break;
+            case "update":
+                updateCustomer(request,response);
+                break;
+            case "insert":
+        }
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {

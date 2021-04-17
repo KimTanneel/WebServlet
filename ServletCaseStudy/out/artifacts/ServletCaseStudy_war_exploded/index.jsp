@@ -139,12 +139,12 @@
     </div>
     <!-- Copyright -->
 </footer>
-<script>
+<script  >
     $(document).ready(function () {
         $('#btn-customer').click(function () {
             $.ajax({
-                type:'POST',
-                url:'CustomerServlet',
+                type:'GET',
+                url:'customer',
                 success :function (result) {
                     $('#body').html(result);
                 }
