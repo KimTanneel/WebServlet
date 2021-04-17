@@ -117,6 +117,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         try{
             connection = ConnectDB.getConnection();
             statement = connection.prepareStatement(DELETE_CUSTOMER_SQL);
+            statement.setInt(1,Integer.parseInt(id));
             statement.executeUpdate();
         }
 

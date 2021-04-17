@@ -16,6 +16,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
 </head>
 
 <body>
@@ -30,8 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Employee</a>
             </li>
+<%--            href="/customer?action=view"--%>
             <li class="nav-item">
-                <a class="nav-link" href="/customer?action=view">Customer</a>
+                <a class="nav-link btn " id="btn-customer" >Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Service</a>
@@ -66,7 +68,7 @@
             <li>ItemOne</li>
         </ul>
     </div>
-    <div class="col-9 body">
+    <div class="col-9 " id="body">
         <h2>BODY</h2>
     </div>
 </div>
@@ -137,7 +139,20 @@
     </div>
     <!-- Copyright -->
 </footer>
+<script>
+    $(document).ready(function () {
+        $('#btn-customer').click(function () {
+            $.ajax({
+                type:'POST',
+                url:'CustomerServlet',
+                success :function (result) {
+                    $('#body').html(result);;;
+                }
+            })
+        })
 
+    })
+</script>
 </body>
 
 </html>

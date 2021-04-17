@@ -10,21 +10,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.http.HttpResponse;
 @WebServlet(name = "CustomerServlet",urlPatterns = "/customer")
 public class CustomerServlet extends javax.servlet.http.HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String action = request.getParameter("action");
-        switch (action){
-            case "create":
-               createNewCustomer(request,response);
-                break;
-            case "update":
-                updateCustomer(request,response);
-                break;
-            case "insert":
-        }
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        out.println("HELLOL GUY");
+        //        String action = request.getParameter("action");
+//        switch (action){
+//            case "create":
+//               createNewCustomer(request,response);
+//                break;
+//            case "update":
+//                updateCustomer(request,response);
+//                break;
+//            case "insert":
+//        }
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -68,12 +72,25 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
                 break;
             case "view":
                 viewCustomerList(request,response);
+                break;
             case "edit":
                 viewEditForm(request,response);
+                break;
+            case "delete":
+                deleteCustomer(request,response);
+                break;
             default:
                 viewCustomerList(request,response);
                 break;
         }
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String id =request.getParameter("id");
+        CustomerSevice customerSevice = new CustomerServiceImpl();
+        customerSevice.DeleteCustomer(id);
+        request.setAttribute("listCustomer",customerSevice.findAll());
+        request.getRequestDispatcher("/customer/view.jsp").forward(request,response);
     }
 
     private void viewEditForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
