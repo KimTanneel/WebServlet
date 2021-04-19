@@ -1,22 +1,27 @@
 package controller;
 
 import model.Customer;
+import model.TypeCustomer;
 import service.CustomerServiceImpl;
 import service.CustomerSevice;
+import service.GetTypeService;
+import service.GetTypeServiceImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.http.HttpResponse;
+import java.util.List;
+
 @WebServlet(name = "CustomerServlet",urlPatterns = "/customer")
 public class CustomerServlet extends javax.servlet.http.HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String action = request.getParameter("action");
+        if(action == null){
+            action = "";
+        }
         switch (action){
             case "create":
                createNewCustomer(request,response);
@@ -100,8 +105,11 @@ public class CustomerServlet extends javax.servlet.http.HttpServlet {
         request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
     }
 
-    private void viewCreateCustomerForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-            response.sendRedirect("/customer/create.jsp");
+    private void viewCreateCustomerForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        GetTypeService getTypeService = new GetTypeServiceImpl();
+        List<TypeCustomer> typeCustomerList = getTypeService.findAllTypeCustomer();
+        request.setAttribute("typeCustomerList",typeCustomerList);
+        request.getRequestDispatcher("/customer/create.jsp").forward(request,response);
     }
 
     public void viewCustomerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

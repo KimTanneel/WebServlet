@@ -66,9 +66,9 @@
                 </c:choose>
             </td>
             <td>${customer.birthday }</td>
-            <td><a class="btn btn-info " id="btn-detail${customer.id}" name="detail" >Detail</a></td>
-            <td><a class="btn btn-primary" id="btn-edit${customer.id}"name="edit" >Edit</a></td>
-            <td><a class="btn btn-danger" id="btn-delete${customer.id}" name="delete">Delete</a></td>
+            <td><a class="btn btn-info " id="btn-detail${customer.id} " name="detail" href="/customer?action=detail&id=${customer.id}" >Detail</a></td>
+            <td><a class="btn btn-primary" id="btn-edit${customer.id} "name="edit" href="/customer?action=edit&id=${customer.id}" >Edit</a></td>
+            <td><a class="btn btn-danger" id="btn-delete${customer.id}" name="delete" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -78,19 +78,19 @@
         <a href="/customer?action=create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create New customer</a>
         <a href="/customer?action=search" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Search</a>
     </div>
-    <div class="float-right ml-5">
-        <form action="sort" method="get">
-            <div class="form-group">
-                <label for="sel1"> <strong>Select Type Sort</strong></label>
-                <select class="form-control" name="option" id="sel1">
-                    <option value="1">Name</option>
-                    <option value="2">Price</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Sort</button>
-        </form>
+<%--    <div class="float-right ml-5">--%>
+<%--        <form action="sort" method="get">--%>
+<%--            <div class="form-group">--%>
+<%--                <label for="sel1"> <strong>Select Type Sort</strong></label>--%>
+<%--                <select class="form-control" name="option" id="sel1">--%>
+<%--                    <option value="1">Name</option>--%>
+<%--                    <option value="2">Price</option>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--            <button type="submit" class="btn btn-primary">Sort</button>--%>
+<%--        </form>--%>
 
-    </div>
+<%--    </div>--%>
 
 </div>
 <script>

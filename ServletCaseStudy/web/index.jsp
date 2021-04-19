@@ -36,7 +36,7 @@
                 <a class="nav-link btn " id="btn-customer" >Customer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Service</a>
+                <a class="nav-link btn" id="btn-service" href="/service">Service</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contract</a>

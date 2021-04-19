@@ -90,7 +90,7 @@
 <%--            <button type="submit" class="btn btn-primary">Sort</button>--%>
 <%--        </form>--%>
 
-<%--    </div>--%>
+    </div>
 
 </div>
 <script>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -13,7 +14,7 @@
 </head>
 <body>
 <div class="container-fluid main">
-    <h1>Create New Product</h1>
+    <h1>Create New Service</h1>
     <form action="/customer?action=create" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID</label>
@@ -24,12 +25,10 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">TYPE CUSTOMER</label>
             <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Member</option>
-                    <option value="2">Silver</option>
-                    <option value="3">Gold</option>
-                    <option value="4">Platinum</option>
-                    <option value="5">Diamond</option>
+                <select name="type_id" class="form-control">
+                    <c:forEach items="${typeCustomerList}" var="typeCustomer" >
+                        <option value="${typeCustomer.id}">${typeCustomer.name}</option>
+                    </c:forEach>
                 </select>
             </div>
 
