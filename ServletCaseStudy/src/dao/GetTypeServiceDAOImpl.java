@@ -18,6 +18,7 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
     private static final String SELECT_ALL_RENT_TYPE = "SELECT * FROM RENT_TYPE";
     private static final String SELECT_ALL_EDUCATION_DEGREE_TYPE = "SELECT * FROM EDUCATION_DEGREE";
     private static final String SELECT_ALL_SERVICE_TYPE = "SELECT * FROM SERVICE_TYPE";
+    private static final String SELECT_ALL_USERNAME = "SELECT * FROM USER";
     @Override
     public List<TypeCustomer> selectAllTypeCustomer() {
         List<TypeCustomer> list_typeCustomer = new ArrayList<>();
@@ -140,8 +141,8 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
             statement = connection.prepareStatement(SELECT_ALL_EDUCATION_DEGREE_TYPE);
             resultSet = statement.executeQuery();
             while(resultSet.next()){
-                String typeEducationDegree_id = resultSet.getInt("position_id")+"";
-                String typeEducationDegree_name = resultSet.getString("position_name")+"";
+                String typeEducationDegree_id = resultSet.getInt("education_degree_id")+"";
+                String typeEducationDegree_name = resultSet.getString("edcation_degree_name")+"";
                 listTypeEducationDegree.add(new TypeEducationDegree(typeEducationDegree_id,typeEducationDegree_name));
             }
         }
@@ -178,7 +179,7 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
             resultSet = statement.executeQuery();
             while(resultSet.next()){
                 String typeDivision_id = resultSet.getInt("division_id")+"";
-                String typeDivision_name = resultSet.getString("devision_name")+"";
+                String typeDivision_name = resultSet.   getString("division_name")+"";
                 listTypeDivision.add(new TypeDivision(typeDivision_id,typeDivision_name));
             }
         }
@@ -214,9 +215,9 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
             statement = connection.prepareStatement(SELECT_ALL_SERVICE_TYPE);
             resultSet = statement.executeQuery();
             while(resultSet.next()){
-                String typeDivision_id = resultSet.getInt("division_id")+"";
-                String typeDivision_name = resultSet.getString("devision_name")+"";
-                listTypeService.add(new TypeService(typeDivision_id,typeDivision_name));
+                String typeService_id = resultSet.getInt("service_type_id")+"";
+                String typeSerivce_name = resultSet.getString("service_type_name")+"";
+                listTypeService.add(new TypeService(typeService_id,typeSerivce_name));
             }
         }
 
@@ -238,5 +239,42 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
 
         }
         return listTypeService;
+    }
+
+    @Override
+    public List<TypeUserName> selectALlTypeUserName() {
+        List<TypeUserName> listTypeUserName = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet=null ;
+        try{
+            connection = ConnectDB.getConnection();
+            statement = connection.prepareStatement(SELECT_ALL_USERNAME);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                listTypeUserName.add(new TypeUserName(username,password));
+            }
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if(connection!=null){
+                    connection.close();
+                }
+                if(statement!=null){
+                    statement.close();
+                }
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+
+        }
+        return listTypeUserName;
     }
 }

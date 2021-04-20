@@ -12,5 +12,6 @@ public interface GetTypeServiceDAO {
     List<TypeEducationDegree> selectAllTypeEducationDegree();
     List<TypeDivision> selectAllTypeDivision();
     List<TypeService> selectAllTypeService();
+    List<TypeUserName> selectALlTypeUserName();
 
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -30,13 +31,13 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">BIRTHDAY</label>
             <div class="col-sm-5">
-                <input type="text" name="birthday" class="form-control" >
+                <input type="date" name="birthday" class="form-control" >
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID CARD</label>
             <div class="col-sm-5">
-                <input type="text" name="birthday" class="form-control" >
+                <input type="text" name="id_card" class="form-control" >
             </div>
         </div>
         <div class="form-group row">
@@ -60,41 +61,41 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">POSITION ID</label>
             <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Lễ Tân</option>
-                    <option value="2">Phục Vụ</option>
-                    <option value="3">Chuyên Viên</option>
-                    <option value="4">Giám Sát</option>
-                    <option value="5">Giám Đốc</option>
+                <select name="position_id" class="form-control">
+                    <c:forEach items="${typePositionList}" var="typePosition" >
+                        <option value="${typePosition.id}">${typePosition.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">EDUCATION ID</label>
             <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Trung Cấp</option>
-                    <option value="2">Cao Đẳng</option>
-                    <option value="3">Đại Học</option>
-                    <option value="4">Sau Đại Học</option>
-                </select>
+            <select name="education_id" class="form-control">
+                <c:forEach items="${typeEducationDegreeList}" var="typeEducation" >
+                    <option value="${typeEducation.id}">${typeEducation.name}</option>
+                </c:forEach>
+            </select>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">DIVISION ID</label>
             <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Sale-Marketing</option>
-                    <option value="2">Hành Chính</option>
-                    <option value="3">Phục Vụ</option>
-                    <option value="4">Manager</option>
+                <select name="division_id" class="form-control">
+                    <c:forEach items="${typeDivisionList}" var="typeDivision" >
+                        <option value="${typeDivision.id}">${typeDivision.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">USERNAME</label>
             <div class="col-sm-5">
-                <input type="text" name="email" class="form-control" >
+                <select name="username" class="form-control">
+                    <c:forEach items="${typeUserNameList}" var="typeUsername" >
+                        <option value="${typeUsername.username}">${typeUsername.username}</option>
+                    </c:forEach>
+                </select>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>

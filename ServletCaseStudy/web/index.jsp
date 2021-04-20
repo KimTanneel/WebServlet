@@ -29,7 +29,7 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Employee</a>
+                <a class="nav-link" href="/employee">Employee</a>
             </li>
 <%--            href="/customer?action=view"--%>
             <li class="nav-item">

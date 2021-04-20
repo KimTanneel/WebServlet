@@ -81,6 +81,6 @@ public class ServiceServlet extends HttpServlet {
         List<TypeService> typeServiceList = getTypeService.findAllTypeService();
         request.setAttribute("typeRentList",typeRentList);
         request.setAttribute("typeServiceList",typeServiceList);
-        request.getRequestDispatcher("/customer/create.jsp").forward(request,response);
+        request.getRequestDispatcher("/service/create.jsp").forward(request,response);
     }
 }

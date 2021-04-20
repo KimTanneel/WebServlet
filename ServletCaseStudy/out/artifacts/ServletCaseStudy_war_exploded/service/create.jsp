@@ -1,9 +1,10 @@
- <%--
-  Created by IntelliJ IDEA.
-  User: ADMIN
-  Date: 4/1/2021
-  Time: 9:14 PM
-  To change this template use File | Settings | File Templates.
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+ Created by IntelliJ IDEA.
+ User: ADMIN
+ Date: 4/1/2021
+ Time: 9:14 PM
+ To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -48,10 +49,10 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">RENT TYPE ID</label>
             <div class="col-sm-5">
-                <select name="rent_type_id" class="form-control" >
-                    <option value="1">HOME</option>
-                    <option value="2">HOUSE</option>
-                    <option value="3">VILLA</option>
+                <select name="type_id" class="form-control">
+                    <c:forEach items="${typeRentList}" var="typeRent" >
+                        <option value="${typeRent.id}">${typeRent.name}</option>
+                    </c:forEach>
                 </select>
             </div>
 
@@ -59,10 +60,10 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">SERVICE TYPE ID</label>
             <div class="col-sm-5">
-                <select name="service_type_id" class="form-control" >
-                    <option value="1">NORMAL</option>
-                    <option value="2">HIGH</option>
-                    <option value="3">ROYAL</option>
+                <select name="type_id" class="form-control">
+                    <c:forEach items="${typeServiceList}" var="typeService" >
+                        <option value="${typeService.id}">${typeService.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>

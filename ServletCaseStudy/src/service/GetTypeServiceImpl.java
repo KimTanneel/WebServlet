@@ -39,4 +39,9 @@ public class GetTypeServiceImpl implements GetTypeService {
     public List<TypeService> findAllTypeService() {
         return getTypeServiceDAO.selectAllTypeService();
     }
+
+    @Override
+    public List<TypeUserName> findAllTypeUserName() {
+        return getTypeServiceDAO.selectALlTypeUserName();
+    }
 }

@@ -1,8 +1,6 @@
 package controller;
 
-import model.Employee;
-import model.TypeCustomer;
-import model.TypeRent;
+import model.*;
 import service.EmployeeService;
 import service.EmployeeServiceImpl;
 import service.GetTypeService;
@@ -112,9 +110,15 @@ public class EmployeeServlet extends HttpServlet {
 
     private void viewCreateEmployeeForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         GetTypeService getTypeService = new GetTypeServiceImpl();
-        List<TypeRent> typeRentList = getTypeService.findAllTypeRent();
-        request.setAttribute("typeRentList",typeRentList);
-        request.getRequestDispatcher("/customer/create.jsp").forward(request,response);
+        List<TypePosition> typePositionList = getTypeService.findAllTypePosition();
+        List<TypeEducationDegree> typeEducationDegreeList = getTypeService.findAllTypeEducationDegree();
+        List<TypeUserName> typeUserNameList = getTypeService.findAllTypeUserName();
+        List<TypeDivision> typeDivisionList = getTypeService.findAllTypeDivision();
+        request.setAttribute("typePositionList",typePositionList);
+        request.setAttribute("typeEducationDegreeList",typeEducationDegreeList);
+        request.setAttribute("typeUserNameList",typeUserNameList);
+        request.setAttribute("typeDivisionList",typeDivisionList);
+        request.getRequestDispatcher("/employee/create.jsp").forward(request,response);
     }
 
     public void viewEmployeeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

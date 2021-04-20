@@ -27,17 +27,16 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             while(resultSet.next()){
                 String employee_id = resultSet.getInt("employee_id")+"";
                 String employee_name = resultSet.getString("employee_name")+"";
-                String employee_area = resultSet.getInt("employee_area")+"";
-                String employee_cost = resultSet.getDouble("employee_cost")+"";
-                String employee_max_people = resultSet.getInt("employee_max_people")+"";
-                String rent_type_id = resultSet.getInt("rent_type_id")+"";
-                String employee_type_id = resultSet.getInt("employee_type_id")+"";
-                String standard_room = resultSet.getString("standard_room");
-                String description_other_convenience = resultSet.getString("description_other_convenience");
-                String pool_area = resultSet.getDouble("pool_area")+"";
-                String number_of_floors = resultSet.getInt("number_of_floors")+"";
-
-                list_employee.add(new Employee(employee_id,employee_name,employee_area,employee_cost,employee_max_people,rent_type_id,employee_type_id,standard_room,description_other_convenience,pool_area,number_of_floors));
+                String employee_birthday = resultSet.getDate("employee_birthday").toString();
+                String employee_id_card = resultSet.getString("employee_id_card");
+                String employee_salary = resultSet.getDouble("employee_salary")+"";
+                String employee_phone = resultSet.getString("employee_phone")+"";
+                String employee_email = resultSet.getString("employee_email")+"";
+                String position_id = resultSet.getInt("position_id")+"";
+                String education_degree_id = resultSet.getInt("education_degree_id")+"";
+                String division_id = resultSet.getInt("division_id")+"";
+                String username = resultSet.getString("username")+"";
+                list_employee.add(new Employee(employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,position_id,education_degree_id,division_id,username));
             }
         }
 
@@ -78,16 +77,23 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             while(resultSet.next()){
                 String employee_id = resultSet.getInt("employee_id")+"";
                 String employee_name = resultSet.getString("employee_name")+"";
-                String employee_area = resultSet.getInt("employee_area")+"";
-                String employee_cost = resultSet.getDouble("employee_cost")+"";
-                String employee_max_people = resultSet.getInt("employee_max_people")+"";
-                String rent_type_id = resultSet.getInt("rent_type_id")+"";
+                String employee_birthday = resultSet.getDate("employee_birthday").toString();
+                String employee_id_card = resultSet.getString("employee_id_card");
+                String employee_salary = resultSet.getDouble("employee_salary")+"";
+                String employee_phone = resultSet.getString("employee_phone")+"";
+                String employee_email = resultSet.getString("employee_email")+"";
+                String position_id = resultSet.getInt("position_id")+"";
+                String education_degree_id = resultSet.getInt("education_degree_id")+"";
+                String division_id = resultSet.getInt("division_id")+"";
+                String username = resultSet.getString("username")+"";
+
+                String rent_type_id = resultSet.getInt("employee")+"";
                 String employee_type_id = resultSet.getInt("employee_type_id")+"";
                 String standard_room = resultSet.getString("standard_room");
                 String description_other_convenience = resultSet.getString("description_other_convenience");
                 String pool_area = resultSet.getDouble("pool_area")+"";
                 String number_of_floors = resultSet.getInt("number_of_floors")+"";
-                employee= new Employee(employee_id,employee_name,employee_area,employee_cost,employee_max_people,rent_type_id,employee_type_id,standard_room,description_other_convenience,pool_area,number_of_floors);
+                employee= new Employee(employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,position_id,education_degree_id,division_id,username);
             }
 
         }
@@ -156,7 +162,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             statement.setInt(1,Integer.parseInt(employee.getId()));
             statement.setString(2,employee.getName());
             statement.setDate(3, Date.valueOf(employee.getBirthday()));
-            statement.setInt(4,Integer.parseInt(employee.getId_card()));
+            statement.setString(4,employee.getId_card());
             statement.setDouble(5,Double.parseDouble(employee.getSalary()));
             statement.setString(6,employee.getPhone());
             statement.setString(7,employee.getEmail());
@@ -201,14 +207,14 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             statement.setInt(1,Integer.parseInt(employee.getId()));
             statement.setString(2,employee.getName());
             statement.setDate(3, Date.valueOf(employee.getBirthday()));
-            statement.setInt(4,Integer.parseInt(employee.getId_card()));
+            statement.setString(4,employee.getId_card());
             statement.setDouble(5,Double.parseDouble(employee.getSalary()));
             statement.setString(6,employee.getPhone());
             statement.setString(7,employee.getEmail());
             statement.setInt(8,Integer.parseInt(employee.getPosition_id()));
             statement.setInt(9,Integer.parseInt(employee.getEducation_id()));
             statement.setInt(10,Integer.parseInt(employee.getDivision_id()));
-            statement.setString(11,employee.getEmail());
+            statement.setString(11,employee.getUsername());
             System.out.println(statement.toString());
             statement.executeUpdate();
 

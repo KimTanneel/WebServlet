@@ -18,33 +18,47 @@
     <tr>
         <th scope="col">ID</th>
         <th scope="col">NAME</th>
-        <th scope="col">TYPE</th>
-        <th scope="col">GENDER</th>
         <th scope="col">BIRTHDAY</th>
+        <th scope="col">ID_CARD</th>
+        <th scope="col">SALARY</th>
+        <th scope="col">PHONE</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">POSITION</th>
+        <th scope="col">EDUCATION</th>
+        <th scope="col">DIVISION</th>
+        <th scope="col">USERNAME</th>
 
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${listCustomer}" var="customer" >
+    <c:forEach items="${listEmployee}" var="employee" >
         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
+            <td>${employee.id}</td>
+            <td>${employee.name}</td>
+            <td>${employee.birthday}</td>
+            <td>${employee.id_card}</td>
+            <td>${employee.salary}</td>
+            <td>${employee.phone}</td>
+            <td>${employee.email}</td>
             <td>
                 <c:choose>
-                    <c:when test = "${customer.type_id == 1}">
-                        MemBer
+                    <c:when test = "${employee.position_id == 1}">
+                       Lễ Tân
                     </c:when>
-                    <c:when test = "${customer.type_id ==2}">
-                        Silver
+                    <c:when test = "${employee.position_id ==2}">
+                        Phục Vụ
                     </c:when>
-                    <c:when test = "${customer.type_id ==3}">
-                        Gold
+                    <c:when test = "${employee.position_id ==3}">
+                        Chuyên Viên
                     </c:when>
-                    <c:when test = "${customer.type_id ==4}">
-                        Platinum
+                    <c:when test = "${employee.position_id ==4}">
+                        Giám sát
                     </c:when>
-                    <c:when test = "${customer.type_id ==5}">
-                        Dinamond
+                    <c:when test = "${employee.position_id ==5}">
+                        Quản lí
+                    </c:when>
+                    <c:when test = "${employee.position_id ==6}">
+                        Giám Đốc
                     </c:when>
                     <c:otherwise>
                         UNDEFINE
@@ -54,29 +68,55 @@
             </td>
             <td>
                 <c:choose>
-                    <c:when test = "${customer.gender == 0}">
-                        MALE
+                    <c:when test = "${employee.education_id == 1}">
+                        Trung Cấp
                     </c:when>
-                    <c:when test = "${customer.gender ==1}">
-                        FEMALE
+                    <c:when test = "${employee.education_id ==2}">
+                        Cao Đẳng
+                    </c:when>
+                    <c:when test = "${employee.education_id ==3}">
+                        Đại Học
+                    </c:when>
+                    <c:when test = "${employee.education_id ==4}">
+                        Sau Đại Học
                     </c:when>
                     <c:otherwise>
                         UNDEFINE
                     </c:otherwise>
                 </c:choose>
             </td>
-            <td>${customer.birthday }</td>
-            <td><a class="btn btn-info " id="btn-detail${customer.id} " name="detail" href="/customer?action=detail&id=${customer.id}" >Detail</a></td>
-            <td><a class="btn btn-primary" id="btn-edit${customer.id} "name="edit" href="/customer?action=edit&id=${customer.id}" >Edit</a></td>
-            <td><a class="btn btn-danger" id="btn-delete${customer.id}" name="delete" href="/customer?action=delete&id=${customer.id}">Delete</a></td>
+            <td>
+                <c:choose>
+                    <c:when test = "${employee.division_id == 1}">
+                        Sale Marketing
+                    </c:when>
+                    <c:when test = "${employee.division_id ==2}">
+                        Hành Chính
+                    </c:when>
+                    <c:when test = "${employee.division_id ==3}">
+                        Phục Vụ
+                    </c:when>
+                    <c:when test = "${employee.division_id ==4}">
+                        Quản lí
+                    </c:when>
+                    <c:otherwise>
+                        UNDEFINE
+                    </c:otherwise>
+                </c:choose>
+            </td>
+
+            <td>${employee.username }</td>
+            <td><a class="btn btn-info " id="btn-detail${employee.id} " name="detail" href="/employee?action=detail&id=${employee.id}" >Detail</a></td>
+            <td><a class="btn btn-primary" id="btn-edit${employee.id} "name="edit" href="/employee?action=edit&id=${employee.id}" >Edit</a></td>
+            <td><a class="btn btn-danger" id="btn-delete${employee.id}" name="delete" href="/employee?action=delete&id=${employee.id}">Delete</a></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <div class="d-flex">
     <div class="mr-5">
-        <a href="/customer?action=create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create New customer</a>
-        <a href="/customer?action=search" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Search</a>
+        <a href="/employee?action=create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create New employee</a>
+        <a href="/employee?action=search" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Search</a>
     </div>
 <%--    <div class="float-right ml-5">--%>
 <%--        <form action="sort" method="get">--%>
@@ -105,7 +145,7 @@
                 $.ajax({
                     type:'GET',
                     data:{action:'edit',id:i},
-                    url:'customer',
+                    url:'employee',
                     success :function (result) {
                         $('#body').html(result);
                     }
@@ -124,7 +164,7 @@
     //             $.ajax({
     //                 type:'GET',
     //                 data:{action:'delete',id:i},
-    //                 url:'customer',
+    //                 url:'employee',
     //                 success :function (result) {
     //                     $('#body').html(result);
     //                 }
