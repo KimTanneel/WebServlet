@@ -22,24 +22,17 @@
                 <input readonly type="text" name="id" class="form-control" value="${customer.id}">
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">TYPE CUSTOMER</label>
-            <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Member</option>
-                    <option value="2">Silver</option>
-                    <option value="3">Gold</option>
-                    <option value="4">Platinum</option>
-                    <option value="5">Diamond</option>
 
-                </select>
-            </div>
-
-        </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-5">
                 <input type="text" name="name" class="form-control" value="${customer.name}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Birthday</label>
+            <div class="col-sm-5">
+                <input type="date" name="birthday" class="form-control" value="${customer.birthday}">
             </div>
         </div>
         <div class="form-group row">

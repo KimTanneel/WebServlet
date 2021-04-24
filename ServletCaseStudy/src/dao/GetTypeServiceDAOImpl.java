@@ -19,6 +19,7 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
     private static final String SELECT_ALL_EDUCATION_DEGREE_TYPE = "SELECT * FROM EDUCATION_DEGREE";
     private static final String SELECT_ALL_SERVICE_TYPE = "SELECT * FROM SERVICE_TYPE";
     private static final String SELECT_ALL_USERNAME = "SELECT * FROM USER";
+    private static final String SELECT_ALL_EMPLOYEE = "SELECT * FROM EMPLOYEE";
     @Override
     public List<TypeCustomer> selectAllTypeCustomer() {
         List<TypeCustomer> list_typeCustomer = new ArrayList<>();
@@ -277,4 +278,5 @@ public class GetTypeServiceDAOImpl implements GetTypeServiceDAO {
         }
         return listTypeUserName;
     }
+
 }

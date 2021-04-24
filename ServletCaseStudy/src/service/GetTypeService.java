@@ -12,5 +12,4 @@ public interface GetTypeService {
     List<TypeEducationDegree> findAllTypeEducationDegree();
     List<TypeService> findAllTypeService();
     List<TypeUserName> findAllTypeUserName();
-
 }

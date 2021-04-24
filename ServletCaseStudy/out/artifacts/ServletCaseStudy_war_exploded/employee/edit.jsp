@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -10,117 +11,126 @@
 <head>
     <link rel="stylesheet" href="create.css">
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body id="body-edit">
-<div class="container-fluid main" id="main">
-    <h1>Edit Product</h1>
-    <form action="/customer?action=update" method="post">
+<body>
+<div class="container-fluid main">
+    <h1>Edit Employee</h1>
+    <form action="/employee?action=update" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID</label>
             <div class="col-sm-5">
-                <input readonly type="text" name="id" class="form-control" value="${customer.id}">
+                <input readonly type="text" name="id" class="form-control " value="${employee.id}" >
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">TYPE CUSTOMER</label>
+            <label class="col-sm-2 col-form-label">NAME</label>
             <div class="col-sm-5">
-                <select name="type_id" class="form-control" >
-                    <option value="1">Member</option>
-                    <option value="2">Silver</option>
-                    <option value="3">Gold</option>
-                    <option value="4">Platinum</option>
-                    <option value="5">Diamond</option>
-
-                </select>
-            </div>
-
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-5">
-                <input type="text" name="name" class="form-control" value="${customer.name}">
+                <input  type="text" name="name" class="form-control " value="${employee.name}" >
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Birthday</label>
+            <label class="col-sm-2 col-form-label">BIRTHDAY</label>
             <div class="col-sm-5">
-                <input type="date" name="birthday" class="form-control" value="${customer.birthday}">
+                <input type="date" name="birthday" class="form-control "value="${employee.birthday}" >
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2" for="exampleFormControlSelect1">Gender</label>
-            <div class="col-sm-5">
-                <select name="gender" class="form-control" id="exampleFormControlSelect1">
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-            </div>
-
         </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">ID CARD</label>
             <div class="col-sm-5">
-                <input type="text" name="id_card" class="form-control" value="${customer.id_card}" >
+                <input type="text" name="id_card" class="form-control" value="${employee.id_card}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Phone</label>
+            <label class="col-sm-2 col-form-label">SALARY</label>
             <div class="col-sm-5">
-                <input type="text" name="phone" class="form-control" value="${customer.phone}">
+                <input type="text" name="salary" class="form-control" value="${employee.salary}" >
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Email</label>
+            <label class="col-sm-2 col-form-label">PHONE</label>
             <div class="col-sm-5">
-                <input type="email" name="email" class="form-control" value="${customer.email}">
+                <input type="text" name="phone" class="form-control" value="${employee.phone}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label ">Address</label>
+            <label class="col-sm-2 col-form-label">EMAIL</label>
             <div class="col-sm-5">
-                <input type="text" name="address" class="form-control" value="${customer.address}">
+                <input type="text" name="email" class="form-control" value="${employee.email} ">
             </div>
         </div>
-        <button type="button" class="btn btn-primary " id="save">Save</button>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">POSITION ID</label>
+            <div class="col-sm-5">
+                <select name="position_id" class="form-control"  value="${employee.position_id} ">
+                    <c:forEach items="${typePositionList}" var="typePosition" >
+                        <c:choose>
+                            <c:when test="${typePosition.id==employee.position_id}">
+                                <option selected value="${typePosition.id}">${typePosition.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option  value="${typePosition.id}">${typePosition.name}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">EDUCATION ID</label>
+            <div class="col-sm-5">
+                <select name="education_id" class="form-control"  value="${employee.education_id} ">
+                    <c:forEach items="${typeEducationDegreeList}" var="typeEducation" >
+                        <c:choose>
+                            <c:when test="${typeEducation.id==employee.education_id}">
+                                <option selected value="${typeEducation.id}">${typeEducation.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option  value="${typeEducation.id}">${typeEducation.name}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">DIVISION ID</label>
+            <div class="col-sm-5">
+                <select name="division_id" class="form-control" value="${employee.division_id} ">
+                    <c:forEach items="${typeDivisionList}" var="typeDivision" >
+                        <c:choose>
+                            <c:when test="${typeDivision.id==employee.division_id}">
+                                <option selected value="${typeDivision.id}">${typeDivision.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option  value="${typeDivision.id}">${typeDivision.name}</option>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">USERNAME</label>
+            <div class="col-sm-5">
+                <select name="username" class="form-control" value="${employee.username} ">
+                    <c:forEach items="${typeUserNameList}" var="typeUsername" >
+                        <c:choose>
+                            <c:when test="${employee.username==typeUsername.username}">
+                                <option selected value="${typeUsername.username}">${typeUsername.username}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${typeUsername.username}">${typeUsername.username}</option>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
         <button type="reset" class = "btn btn-primary">Cancel</button>
     </form>
-    <script  >
-        $(document).ready(function () {
-            $('#save').click(function () {
-                let id = document.getElementsByName('id');
-                console.log(id);
-                let type_id = document.getElementsByName('type_id');
-                let name = document.getElementsByName('name').values();
-                let birthday = document.getElementsByName('birthday');
-                let gender = document.getElementsByName('gender');
-                let id_card = document.getElementsByName('id_card');
-                let phone = document.getElementsByName('phone');
-                let email = document.getElementsByName('email');
-                let address = document.getElementsByName('address');
-                $.ajax({
-                    type:'POST',
-                    data:{
-                        action:'update',
-                        id:id,
-                        type_id:type_id,
-                        name:name,
-                        birthday:birthday,
-                        gender:gender,
-                        id_card:id_card,
-                        phone:phone,
-                        email:email,
-                        address:address
-                    },
-                    url:'customer',
-                    success :function (result) {
-                        $('#main').html(result);
-                    }
-                })
-            })
-
-        })
-    </script>
 </div>
 </body>
 </html>

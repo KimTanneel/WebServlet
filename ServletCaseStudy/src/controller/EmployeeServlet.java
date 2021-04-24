@@ -102,8 +102,16 @@ public class EmployeeServlet extends HttpServlet {
     private void viewEditForm(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String id =request.getParameter("id");
         EmployeeService employeeSevice = new EmployeeServiceImpl();
+        GetTypeService getTypeService = new GetTypeServiceImpl();
         Employee employee = employeeSevice.findEmployeeById(id);
-
+        List<TypePosition> typePositionList = getTypeService.findAllTypePosition();
+        List<TypeEducationDegree> typeEducationDegreeList = getTypeService.findAllTypeEducationDegree();
+        List<TypeUserName> typeUserNameList = getTypeService.findAllTypeUserName();
+        List<TypeDivision> typeDivisionList = getTypeService.findAllTypeDivision();
+        request.setAttribute("typePositionList",typePositionList);
+        request.setAttribute("typeEducationDegreeList",typeEducationDegreeList);
+        request.setAttribute("typeUserNameList",typeUserNameList);
+        request.setAttribute("typeDivisionList",typeDivisionList);
         request.setAttribute("employee",employee);
         request.getRequestDispatcher("/employee/edit.jsp").forward(request,response);
     }

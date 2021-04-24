@@ -13,7 +13,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     private static final String SELECT_USER_BY_ID = "select * from EMPLOYEE where employee_id =?";
     private static final String SELECT_ALL_EMPLOYEE = "SELECT * FROM employee";
     private static final String DELETE_EMPLOYEE_SQL = "delete from EMPLOYEE where employee_id = ?;";
-    private static final String UPDATE_EMPLOYEE_SQL = "update EMPLOYEE set employee_id = ?,employee_name= ?,employee_birthday=? employee_id_card =?,employee_salary=?,employee_phone=?,employee_email=?,position_id=?,education_id=?,division_id=?,username=? where employee_id = ?;";
+    private static final String UPDATE_EMPLOYEE_SQL = "update EMPLOYEE set employee_id = ?,employee_name= ?,employee_birthday=?, employee_id_card =?,employee_salary=?,employee_phone=?,employee_email=?,position_id=?,education_degree_id=?,division_id=?,username=? where employee_id = ?;";
     @Override
     public List<Employee> selectAllEmployee() {
         List<Employee> list_employee = new ArrayList<>();
@@ -30,7 +30,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
                 String employee_birthday = resultSet.getDate("employee_birthday").toString();
                 String employee_id_card = resultSet.getString("employee_id_card");
                 String employee_salary = resultSet.getDouble("employee_salary")+"";
-                String employee_phone = resultSet.getString("employee_phone")+"";
+                String employee_phone = resultSet.getString("employee_phone");
                 String employee_email = resultSet.getString("employee_email")+"";
                 String position_id = resultSet.getInt("position_id")+"";
                 String education_degree_id = resultSet.getInt("education_degree_id")+"";
@@ -72,6 +72,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             connection = ConnectDB.getConnection();
             statement = connection.prepareStatement(SELECT_USER_BY_ID);
             statement.setInt(1,Integer.parseInt(id));
+            System.out.println(statement);
             resultSet = statement.executeQuery();
 
             while(resultSet.next()){
@@ -87,12 +88,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
                 String division_id = resultSet.getInt("division_id")+"";
                 String username = resultSet.getString("username")+"";
 
-                String rent_type_id = resultSet.getInt("employee")+"";
-                String employee_type_id = resultSet.getInt("employee_type_id")+"";
-                String standard_room = resultSet.getString("standard_room");
-                String description_other_convenience = resultSet.getString("description_other_convenience");
-                String pool_area = resultSet.getDouble("pool_area")+"";
-                String number_of_floors = resultSet.getInt("number_of_floors")+"";
+
                 employee= new Employee(employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,position_id,education_degree_id,division_id,username);
             }
 
@@ -169,7 +165,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             statement.setInt(8,Integer.parseInt(employee.getPosition_id()));
             statement.setInt(9,Integer.parseInt(employee.getEducation_id()));
             statement.setInt(10,Integer.parseInt(employee.getDivision_id()));
-            statement.setString(11,employee.getEmail());
+            statement.setString(11,employee.getUsername());
             statement.setInt(12,Integer.parseInt(employee.getId()));
             System.out.println(statement);
             statement.executeUpdate();

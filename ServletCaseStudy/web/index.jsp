@@ -39,7 +39,7 @@
                 <a class="nav-link btn" id="btn-service" href="/service">Service</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contract</a>
+                <a class="nav-link" href="/contract">Contract</a>
             </li>
             <!-- Dropdown -->
             <li class="nav-item dropdown">
@@ -60,17 +60,20 @@
         <button class="btn btn-success" type="submit">Search</button>
     </form>
 </nav>
-<div class="row">
-    <div class="col-3 item-left">
+<div class="row content">
+    <div class="col-2 item-left">
         <ul>
             <li>ItemOne</li>
             <li>ItemOne</li>
             <li>ItemOne</li>
         </ul>
     </div>
-    <div class="col-9 " id="body">
-        <h2>BODY</h2>
+    <div class="col-10" id="content">
+        <div class="" id="body">
+            <h2>BODY</h2>
+        </div>
     </div>
+
 </div>
 <footer class="text-center text-white" style="background-color: #caced1;">
     <!-- Grid container -->
