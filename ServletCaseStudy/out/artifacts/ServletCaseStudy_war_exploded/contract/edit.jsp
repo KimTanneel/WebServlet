@@ -128,7 +128,6 @@
                 </select>
             </div>
         </div>
-        <script></script>
         <button type="submit" class="btn btn-primary">Create</button>
         <button type="reset" class = "btn btn-primary">Cancel</button>
     </form>

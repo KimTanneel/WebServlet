@@ -26,20 +26,20 @@
         <!-- Links -->
         <ul class="navbar-nav ml-5 ">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="./index.jsp">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/employee">Employee</a>
             </li>
 <%--            href="/customer?action=view"--%>
             <li class="nav-item">
-                <a class="nav-link btn " id="btn-customer" >Customer</a>
+                <a class="nav-link btn " id="btn-customer" href="/customer" >Customer</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link btn" id="btn-service" href="/service">Service</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contract">Contract</a>
+                <a class="nav-link" href="/contract ">Contract</a>
             </li>
             <!-- Dropdown -->
             <li class="nav-item dropdown">
@@ -61,11 +61,11 @@
     </form>
 </nav>
 <div class="row content">
-    <div class="col-2 item-left">
-        <ul>
-            <li>ItemOne</li>
-            <li>ItemOne</li>
-            <li>ItemOne</li>
+    <div class="col-2 item-left p-3">
+        <ul style="list-style: none">
+            <li>    <button class="btn btn-primary mb-2  ">List Customer Vip</button></li>
+            <li><button class="btn btn-primary mb-2  ">List Customer Vip</button></li>
+            <li><button class="btn btn-primary mb-2  ">List Customer Vip</button></li>
         </ul>
     </div>
     <div class="col-10" id="content">

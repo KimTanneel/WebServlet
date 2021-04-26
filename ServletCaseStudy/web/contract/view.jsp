@@ -48,7 +48,7 @@
     <div class="mr-5">
         <a href="/contract?action=create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create New contract</a>
         <a href="/contract?action=search" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Search</a>
-    </div>
+    </div>  x
 <%--    <div class="float-right ml-5">--%>
 <%--        <form action="sort" method="get">--%>
 <%--            <div class="form-group">--%>
